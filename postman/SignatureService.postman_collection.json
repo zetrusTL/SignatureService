@@ -1,0 +1,50 @@
+{
+  "info": {
+    "name": "Signature Service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://127.0.0.1:8080" },
+    { "key": "deviceId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Create device",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"algorithm\": \"RSA\",\n  \"label\": \"demo\"\n}"
+        },
+        "url": "{{baseUrl}}/v1/signature-devices"
+      }
+    },
+    {
+      "name": "List devices",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/v1/signature-devices"
+      }
+    },
+    {
+      "name": "Get device by id",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/v1/signature-devices/{{deviceId}}"
+      }
+    },
+    {
+      "name": "Sign transaction",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"data\": \"hello\"\n}"
+        },
+        "url": "{{baseUrl}}/v1/signature-devices/{{deviceId}}/signatures"
+      }
+    }
+  ]
+}
